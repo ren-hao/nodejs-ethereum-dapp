@@ -1,0 +1,76 @@
+body {
+    background-image: url('../images/bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover; 
+    min-height: 100vh;
+}
+
+.cover-overlay {
+    background: rgba(0, 0, 0, 0.3);
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:100vw;
+    height:100vh;
+}
+
+.bg-opacity {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+ul.success li {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    list-style: none;
+}
+
+ul.error li {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    list-style: none;
+}
+
+#hideMe {
+    -moz-animation: cssAnimation 0s ease-in 3s forwards;
+    /* Firefox */
+    -webkit-animation: cssAnimation 0s ease-in 3s forwards;
+    /* Safari and Chrome */
+    -o-animation: cssAnimation 0s ease-in 3s forwards;
+    /* Opera */
+    animation: cssAnimation 0s ease-in 3s forwards;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+@keyframes cssAnimation {
+    to {
+        width:0;
+        height:0;
+        overflow:hidden;
+    }
+}
+@-webkit-keyframes cssAnimation {
+    to {
+        width:0;
+        height:0;
+        visibility:hidden;
+    }
+}
+
+.gray-border {
+    border-style: solid;
+    border-color:rgba(80, 80, 80, 0.8);
+}
+
+.custom-bg {
+    background-color: rgba(245, 245, 245, 0.95);
+}

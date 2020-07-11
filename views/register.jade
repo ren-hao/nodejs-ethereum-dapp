@@ -1,0 +1,38 @@
+extends layout
+
+block content
+  .card.mx-auto.mt-2(style="width: 25rem;")
+    .card-body
+      h3.card-title.text-center.font-weight-bold #{title}
+      h6.card-subtitle.mb-3.text-muted.text-center Ethereum Dapp
+      if errors
+        each error, i in errors
+          div.alert.alert-danger #{error.msg}
+      form(method='post', action='/users/register', enctype='multipart/form-data')
+        //multipart/form-data: 表單中要upload file時使用
+        .form-group
+        label Identity
+        select.form-control(name="identity")
+          option(value="1") Point User
+          option(value="2") Point Provider
+          option(value="3") Merchant
+        .form-group
+        label Account
+        input.form-control(name='account', type='text', placeholder='Enter account')
+        .form-group   
+        label Password
+        input.form-control(name='password', type='password', placeholder='Enter password')
+        .form-group   
+        label Confirm Password
+        input.form-control(name='password2', type='password', placeholder='Confirm password')
+        .form-group
+        label Ethereum Account   
+        input.form-control(name='ethereumaccount', type='text', placeholder='Enter ethereum account') 
+        .form-group
+        label Email   
+        input.form-control(name='email', type='email', placeholder='Enter email')
+        .form-group     
+        label Profile Image
+        input.form-control(name='profileimage', type='file')
+        .form-group
+        input.btn.btn-primary(type='submit', name='submit', value='Register')

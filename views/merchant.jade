@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  .card.mx-auto.mt-2.custom-bg
+    .card-body
+      h3.card-title.text-center.font-weight-bold #{title}
+      h6.card-subtitle.mb-3.text-muted.text-center Describe something...
+      .container
+        .row.p-2.gray-border
+          .container.mb-2
+            .row.align-items-center.gray-border
+              .col-auto
+                h5.my-2 #{user.ethereumaccount}
+          .col.mr-2.gray-border(style="padding-top: 15px; padding-bottom: 15px;")
+            h5.font-weight-bold Points
+            h1.float-right 15
+          .col.gray-border(style="padding-top: 15px; padding-bottom: 15px;")
+            button.btn.btn-success.btn-block Sell points
+            button.btn.btn-info.btn-block Add products
+

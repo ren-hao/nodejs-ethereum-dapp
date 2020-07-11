@@ -1,0 +1,42 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css.map')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    .cover-overlay
+      //修改navbar樣式
+      nav.navbar.navbar-expand-lg.navbar-light.bg-opacity.mb-4
+        .container
+          a.navbar-brand(href='#') Points
+          button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+            span.navbar-toggler-icon
+          #navbarSupportedContent.collapse.navbar-collapse
+            //- h1 #{user}
+            ul.navbar-nav.mr-auto
+              li.nav-item(class=(title == 'Points' ? 'active' : ''))
+                a.nav-link(href='/') Home 
+              if !user
+                li.nav-item(class=(title == 'Register' ? 'active' : ''))
+                  a.nav-link(href='/users/register') Register
+            ul.nav.navbar-nav.navbar-right
+              if user
+                li.nav-item
+                  a.nav-link(href="#") Hi, #{user.account}
+                li.nav-item
+                  a.nav-link(href='/users/logout') Logout
+
+      .container.mb-5
+        #hideMe
+          != messages()
+        block content
+      footer.bg-dark.text-white-50.fixed-bottom.mt-5
+        .container-fluid.text-center.text-white
+          h4 Points
+          small Copyright © Jen Hao
+
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+    script(type='text/javascript' src="/javascripts/bootstrap.js")
+    script(type='text/javascript' src="/javascripts/bootstrap.js.map")

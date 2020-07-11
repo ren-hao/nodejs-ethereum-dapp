@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  .card.mx-auto.mt-2(style="width: 25rem;")
+    .card-body
+      h3.card-title.text-center.font-weight-bold #{title}
+      h6.card-subtitle.mb-3.text-muted.text-center Ethereum Dapp
+      if errors
+        each error, i in errors
+          div.alert.alert-danger #{error.msg}
+      form(method='post', action='/users/login')
+        .form-group
+        label Account
+        input.form-control(name='account', type='text', placeholder='Enter account')
+        .form-group   
+        label Password
+        input.form-control(name='password', type='password', placeholder='Enter password')
+        .form-group
+        input.btn.btn-primary.btn-block(type='submit', name='submit', value='Login')
+      hr
+      .text-center
+        a.card-text.text-muted.mt-3(href="/users/register" style="text-decoration: none;") Create a new account.
