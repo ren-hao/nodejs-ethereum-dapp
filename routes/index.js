@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var Product = require('../models/product');
 var identity2path = new Map();
 identity2path.set(1, '/point-user');
 identity2path.set(2, '/point-provider');
@@ -33,12 +34,13 @@ router.get('/point-provider', ensureAuthenticated, function(req, res, next) {
   }
 });
 
-router.get('/merchant', ensureAuthenticated, function(req, res, next) {
+router.get('/merchant', ensureAuthenticated, async function(req, res, next) {
   if (Number(req.user.identity) !== 3) {
     res.redirect('/');
   }
   else {
-    res.render('merchant', {title: 'Merchant'})
+    let products = await Product.find({owner: req.user.account});
+    res.render('merchant', {title: 'Merchant', products: products});
   }
 });
 

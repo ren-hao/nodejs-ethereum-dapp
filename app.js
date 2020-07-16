@@ -6,7 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
+var productsRouter = require('./routes/products');
 var app = express();
 
 var bodyParser = require('body-parser');
@@ -76,6 +76,7 @@ app.get("*", function(req, res, next){
 });
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/api', productsRouter);
 
 passport.use('local', new LocalStrategy({
     usernameField: "account",

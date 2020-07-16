@@ -1,6 +1,28 @@
 extends layout
 
 block content
+  // Modal
+  #exampleModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+    .modal-dialog(role='document')
+      .modal-content
+        .modal-header
+          h5#exampleModalLabel.modal-title Add product
+          button.close(type='button', data-dismiss='modal', aria-label='Close')
+            span(aria-hidden='true') ×
+        .modal-body
+          form#addProduct(method='post',action='/api/products', enctype='multipart/form-data')
+            //multipart/form-data: 表單中要upload file時使用
+            .form-group
+            label Name
+            input.form-control(name='name', type='text', placeholder='Enter name of product')
+            label Points
+            input.form-control(name='price', type='number', min="0", placeholder='Enter points')
+            .form-group     
+            label Product Image
+            input.form-control(name='productimage', type='file')
+            .form-group
+            input.btn.btn-primary(type='submit', name='submit', value='Add')
+
   .card.mx-auto.mt-2.custom-bg
     .card-body
       h3.card-title.text-center.font-weight-bold #{title}
@@ -16,5 +38,19 @@ block content
             h1.float-right 15
           .col.gray-border(style="padding-top: 15px; padding-bottom: 15px;")
             button.btn.btn-success.btn-block Sell points
-            button.btn.btn-info.btn-block Add products
+            button.btn.btn-info.btn-block(data-toggle='modal', data-target='#exampleModal') Add product
 
+  .card.mx-auto.mt-2.custom-bg
+    .card-body
+      h3.card-title Product list
+      .container
+        .row
+          if products
+            each product in products
+              .col-4 
+                .card.mt-2.text-center
+                  img.card-img-top(src="images/test.jpeg")
+                  .card-body
+                    h5.card-title #{product.name}
+                    p.card-text #{product.price} points
+                    a.btn.btn-primary(href="#") Delete                       
