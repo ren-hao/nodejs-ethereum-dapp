@@ -33,6 +33,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/uploads/product', express.static(path.join(__dirname, 'uploads/product')));
 
 // Handle Sessions
 app.use(session({

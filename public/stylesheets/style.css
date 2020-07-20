@@ -74,3 +74,8 @@ ul.error li {
 .custom-bg {
     background-color: rgba(245, 245, 245, 0.95);
 }
+
+.product-image:hover {
+    -webkit-filter: brightness(90%);
+    opacity: 0.8;
+}

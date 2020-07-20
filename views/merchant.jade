@@ -21,7 +21,21 @@ block content
             label Product Image
             input.form-control(name='productimage', type='file')
             .form-group
-            input.btn.btn-primary(type='submit', name='submit', value='Add')
+            input#addbtn.btn.btn-primary(type='submit', name='submit', value='Add')
+
+  .modal.fade#confirmModal(tabindex='-1', role='dialog')
+    .modal-dialog(role='document')
+      .modal-content
+        .modal-header
+          button.close(type='button', data-dismiss='modal', aria-label='Close')
+            span(aria-hidden='true') ×
+        .modal-body.text-center
+          h5 Are you sure to delete this?
+          p.text-muted You won't be able to revert this.
+          p.product-id
+        .modal-footer
+          button.btn.btn-danger.deleteProduct(type='button') Delete
+          button.btn.btn-secondary(type='button', data-dismiss='modal') Cancel
 
   .card.mx-auto.mt-2.custom-bg
     .card-body
@@ -42,15 +56,15 @@ block content
 
   .card.mx-auto.mt-2.custom-bg
     .card-body
-      h3.card-title Product list
+      h3.card-title(style="padding-left: 15px;") Product List
       .container
         .row
           if products
             each product in products
               .col-4 
                 .card.mt-2.text-center
-                  img.card-img-top(src="images/test.jpeg")
+                  img.card-img-top.product-image(src="#{product.productimage}")
                   .card-body
                     h5.card-title #{product.name}
-                    p.card-text #{product.price} points
-                    a.btn.btn-primary(href="#") Delete                       
+                    p.card-text POINT$ #{product.price}
+                    a.btn.btn-danger.text-white.pass-product-id(data-toggle="modal", data-target="#confirmModal", data-id="#{product.id}") Delete                       
